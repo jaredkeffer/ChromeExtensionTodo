@@ -5,7 +5,7 @@ var container = document.querySelector("#container");
 var theFirstChild = container.firstChild;
 
 var cards = [];
-var nodes = [];
+
 var snapping = true;
 
 function CreateCard(e) {
@@ -86,6 +86,34 @@ function CreateCard(e) {
 }
 function snap(el) {
 	console.log("bike");
-	el.closest(".node");
-	console.log(el.closest(".node"));
+	console.log(getPosition(el));
 }
+
+
+
+
+let nodes = Array.from(document.querySelectorAll(".node"));
+console.log(nodes);
+
+// let elements = Array.from(document.querySelectorAll('a'));
+
+let nodeCoords = nodes.map(link => {
+	let rect = link.getBoundingClientRect();
+  return [rect.x, rect.y];
+});
+
+
+document.addEventListener("click", ev => {
+	let distances = [];
+
+  nodeCoords.forEach(nodeSpot => {
+	  let distance = 0;
+	  distance = Math.hypot(nodeSpot[0]-parseInt(ev.clientX), nodeSpot[1]-parseInt(ev.clientY));
+    distances.push(parseInt(distance));
+  });
+
+  let closestNodeIndex = distances.indexOf(Math.min(...distances));
+
+//   document.getElementById('result').innerHTML = (elements[closestNodeIndex].id);
+	console.log(nodes[closestNodeIndex]);
+});

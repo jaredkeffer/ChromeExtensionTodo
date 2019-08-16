@@ -40,7 +40,7 @@
 	border: 2px solid white;
 	width: 100px;
 	height: 100px;
-	position: fixed;
+	position: absolute;
 	/* transition-duration: 0.05s; */
 }
 
