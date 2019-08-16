@@ -1,27 +1,10 @@
 newNodeButton = document.getElementById("NewNode");
 newNodeButton.addEventListener("mousedown", CreateCard);
 
-var nodes = [];
-// var newCard;
 var container = document.querySelector("#container");
 var theFirstChild = container.firstChild;
 
-
-
-
-
-// class Card {
-// 	constructor(xPos, yPos, active) {
-// 		this.xPos = xPos;
-// 		this.yPos = yPos;
-// 		this.active;
-// 	}
-	
-// }
-
-// function insertAfter(el, referenceNode) {
-// 	referenceNode.parentNode.insertBefore(el, referenceNode.nextSibling);
-// }
+var cards = [];
 
 function CreateCard(e) {
 	var newCard = document.createElement("div");
@@ -43,8 +26,7 @@ function CreateCard(e) {
 	container.insertBefore(newCard, theFirstChild);
 	newCard.classList.add('active');
 
-	// initialX = e.clientX - offsetX;
-	// initialY = e.clientY - offsetY;
+	cards.unshift(newCard);
 
 	var active = true;
 	var currentX = 0;
@@ -61,41 +43,35 @@ function CreateCard(e) {
 		initialY = e.clientY - offsetY;
 		if (e.target === newCard) {
 			e.preventDefault();
+			newCard.classList.remove('inactive');
 			newCard.classList.add('active');
 			active = true;
-			console.log("bike");
 		}
 	}
 	function dragEnd(e) {
 		newCard.classList.remove('active');
+		newCard.classList.add('inactive');
 		initialX = currentX;
 		initialY = currentY;
 		active = false;
-		// console.log(initialX);
 	}
 	function drag(e) {
-		if (active) {
+		if (active && document.hasFocus()) {
 			// e.preventDefault();
-			// currentX = e.clientX;
-			// currentY = e.clientY;
 			currentX = e.clientX - initialX;
 			currentY = e.clientY - initialY;
 			offsetX = currentX;
 			offsetY = currentY;
-			console.log(offsetX);
-			// console.log(initialX);
-			console.log("bikeybikebike");
 			setTranslate(currentX, currentY, newCard);
 		}
 	}
 	function deactivate(e) {
 		newCard.classList.remove('active');
+		newCard.classList.add('inactive');
 		active = false;
 	}
 
 	function setTranslate(xPos, yPos, el) {
 		el.style.transform = "translate(" + xPos + "px, " + yPos + "px)";
-		// el.style.top = yPos + "px;"
-		// el.style.left = xPos + "px;"
 	}
 }

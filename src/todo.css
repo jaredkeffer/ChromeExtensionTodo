@@ -1,6 +1,7 @@
 * {
 	margin: 0;
 	padding: 0;
+	overflow: hidden;
 }
 
 #NewNode {
@@ -9,6 +10,8 @@
 	border-radius: 50%;
 	width: 50px;
 	height: 50px;
+	margin-left: 10px;
+	margin-top: 10px;
 	text-align: center;
 	-webkit-user-select: none; /* Safari */        
 	-moz-user-select: none; /* Firefox */
@@ -26,6 +29,7 @@
 	width: 100vw;
 	background: rgb(149,0,145);
 	background: linear-gradient(121deg, rgba(149,0,145,1) 0%, rgba(191,49,96,1) 30%);
+	position: fixed;
 }
 .draggable {
 
@@ -37,16 +41,16 @@
 	width: 100px;
 	height: 100px;
 	position: fixed;
-	/* transition-duration: 1s; */
+	/* transition-duration: 0.05s; */
 }
-/* .card:active {
-	background: rgb(238,174,202);
-	background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
-	/* transition-duration: 0.5s; */
-/* } */
+
 .active {
 	background: rgb(238,174,202);
 	background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+	z-index: 0;
+}
+.inactive {
+	z-index: -1;
 }
 .card:hover {
 	border-color: black;
