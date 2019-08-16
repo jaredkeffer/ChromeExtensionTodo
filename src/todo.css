@@ -5,7 +5,7 @@
 }
 
 #NewNode {
-	font-family: "Comic Sans", "Comic Sans MS";
+	font-family: 'Varela Round', sans-serif;
 	border: 5px solid black;
 	border-radius: 50%;
 	width: 50px;
@@ -17,6 +17,9 @@
 	-moz-user-select: none; /* Firefox */
 	-ms-user-select: none; /* IE10+/Edge */
 	user-select: none; /* Standard */
+}
+#PlusButton {
+	margin-top: 15%;	
 }
 #NewNode:active {
 
@@ -31,11 +34,8 @@
 	background: linear-gradient(121deg, rgba(149,0,145,1) 0%, rgba(191,49,96,1) 30%);
 	position: fixed;
 }
-.draggable {
-
-}
 .card {
-	font-family: "Comic Sans", "Comic Sans MS";
+	font-family: 'Varela Round', sans-serif;
 	color: white;
 	border: 2px solid white;
 	width: 100px;
@@ -55,4 +55,23 @@
 .card:hover {
 	border-color: black;
 	/* transition-duration: 1s; */
+}
+#NodeContainer {
+	margin-top: 10px;
+	/* float: left; */
+	display: block;
+	position: relative;
+	z-index: -2;
+}
+.column {
+	font-family: 'Varela Round', sans-serif;
+	font-size: 24px;
+	float: left;
+	margin-left: 10vw;
+	width: 20vw;
+	position: relative;
+}
+.node {
+	margin-top: 5vw;
+	margin-bottom: 10vw;
 }
