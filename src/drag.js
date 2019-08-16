@@ -34,7 +34,7 @@ function CreateCard(e) {
 	
 	
 	var textCard = document.createElement("p");
-	var newContent = document.createTextNode("card");
+	var newContent = document.createTextNode("");
 	textCard.appendChild(newContent);
 	newCard.appendChild(textCard);
 
