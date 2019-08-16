@@ -1,0 +1,54 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#NewNode {
+	font-family: "Comic Sans", "Comic Sans MS";
+	border: 5px solid black;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	text-align: center;
+	-webkit-user-select: none; /* Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
+}
+#NewNode:active {
+
+}
+#NewNode:hover {
+
+}
+#container {
+	height: 100vh;
+	width: 100vw;
+	background: rgb(149,0,145);
+	background: linear-gradient(121deg, rgba(149,0,145,1) 0%, rgba(191,49,96,1) 30%);
+}
+.draggable {
+
+}
+.card {
+	font-family: "Comic Sans", "Comic Sans MS";
+	color: white;
+	border: 2px solid white;
+	width: 100px;
+	height: 100px;
+	position: fixed;
+	/* transition-duration: 1s; */
+}
+/* .card:active {
+	background: rgb(238,174,202);
+	background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+	/* transition-duration: 0.5s; */
+/* } */
+.active {
+	background: rgb(238,174,202);
+	background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+.card:hover {
+	border-color: black;
+	/* transition-duration: 1s; */
+}
