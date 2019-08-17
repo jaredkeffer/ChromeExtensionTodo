@@ -61,16 +61,23 @@
 	display: block;
 	position: relative;
 	z-index: -2;
+	-webkit-user-select: none; /* Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
 }
 .column {
 	font-family: 'Varela Round', sans-serif;
 	font-size: 24px;
 	float: left;
-	margin-left: 10vw;
+	margin-left: 5vw;
 	width: 20vw;
 	position: relative;
 }
+.column p {
+	padding: 2.5vw;
+}
 .node {
 	margin-top: 5vw;
-	margin-bottom: 10vw;
+	padding: 2.5vw;
 }
