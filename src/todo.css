@@ -3,8 +3,11 @@
 	padding: 0;
 	overflow: hidden;
 }
-
-#NewNode {
+#TopNav {
+	/* float:left; */
+}
+.new {
+	float:left;
 	font-family: 'Varela Round', sans-serif;
 	border: 5px solid black;
 	border-radius: 50%;
@@ -18,14 +21,13 @@
 	-ms-user-select: none; /* IE10+/Edge */
 	user-select: none; /* Standard */
 }
-#PlusButton {
+.centerButton {
 	margin-top: 15%;	
 }
-#NewNode:active {
-
-}
-#NewNode:hover {
-
+#TrashBin {
+	float:right;
+	margin-right: 50px;
+	transform: rotateY(0deg) rotate(45deg); /* needs Y at 0 deg to behave properly*/
 }
 #container {
 	height: 100vh;
@@ -43,6 +45,10 @@
 	position: fixed;
 	/* transition-duration: 0.05s; */
 }
+.cardTransition {
+	transition-duration: 0.5s;
+
+}
 
 .active {
 	background: rgb(238,174,202);
@@ -56,11 +62,12 @@
 	border-color: black;
 	/* transition-duration: 1s; */
 }
-#NodeContainer {
+#ColumnContainer {
 	margin: 50px;
 	display: block;
 	position: relative;
 	z-index: -2;
+	float: left;
 	-webkit-user-select: none; /* Safari */        
 	-moz-user-select: none; /* Firefox */
 	-ms-user-select: none; /* IE10+/Edge */
@@ -70,14 +77,14 @@
 	font-family: 'Varela Round', sans-serif;
 	font-size: 24px;
 	float: left;
-	margin-left: 5vw;
-	width: 20vw;
+	margin-left: 10px;
+	width: 200px;
 	position: relative;
 }
 .column p {
-	padding: 2.5vw;
+	padding: 10px;
 }
 .node {
-	margin-top: 5vw;
-	padding: 2.5vw;
+	margin-top: 100px;
+	padding: 10px;
 }

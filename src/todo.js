@@ -7,6 +7,7 @@ var theFirstChild = container.firstChild;
 var cards = [];
 
 var snapping = false;
+var minDist = 100;
 
 function CreateCard(e) {
 	var newCard = document.createElement("div");
@@ -36,13 +37,14 @@ function CreateCard(e) {
 		
 		if (e.target === newCard) {
 			var cardRect = newCard.getBoundingClientRect();
-			var x = parseInt(cardRect.left);
-			var y = parseInt(cardRect.top);
+			let x = parseInt(cardRect.left);
+			let y = parseInt(cardRect.top);
 			var oldNode = getClosestNode(x, y);
 			console.log(oldNode);
 			oldNode.classList.add("activeNode");
 			newCard.classList.remove('inactive');
 			newCard.classList.add('active');
+			newCard.classList.remove("cardTransition");
 			active = true;
 		}
 	}
@@ -52,7 +54,6 @@ function CreateCard(e) {
 		newCard.classList.add('inactive');
 		active = false;
 		if (snapping) {
-			console.log("bike");
 			snap(newCard, e.clientX, e.clientY, snapping, e);
 		}
 	}
@@ -61,7 +62,7 @@ function CreateCard(e) {
 			snapping = true;
 			newCard.classList.remove('active');
 			newCard.classList.add('inactive');
-			active = false;
+			active = false; 
 			if (snapping) {
 				snap(newCard, e.clientX, e.clientY, snapping, e);
 			}
@@ -78,14 +79,17 @@ function CreateCard(e) {
 		el.style.transform = "translate(" + xPos + "px, " + yPos + "px)";
 	}
 	function snap(el, xPos, yPos, snapping, e) {
-		if (snapping) {	
-			var closestNode = getClosestActiveNode(xPos, yPos);
-			closestNode.classList.remove("activeNode");
-			var nodeRect = closestNode.getBoundingClientRect();
-			var x = parseInt(nodeRect.left);
-			var y = parseInt(nodeRect.top);
+		if (snapping) {
+			if (getClosestActiveNode(xPos, yPos) != undefined) {	
+				var closestNode = getClosestActiveNode(xPos, yPos);
+				closestNode.classList.remove("activeNode");
+				var nodeRect = closestNode.getBoundingClientRect();
+				let x = parseInt(nodeRect.left);
+				let y = parseInt(nodeRect.top);
+				newCard.classList.add("cardTransition");
 
-			setTranslate(x, y, el);
+				setTranslate(x, y, el);
+			}
 		}
 	}
 }
@@ -102,7 +106,9 @@ function getClosestNode(x, y) {
 	nodeCoords.forEach(nodeSpot => {
 		let distance = 0;
 		distance = Math.hypot(nodeSpot[0]-parseInt(x), nodeSpot[1]-parseInt(y));
-		distances.push(parseInt(distance));
+		// if (distance < minDist) {
+			distances.push(parseInt(distance));
+		// }
 	});
 
 	let closestNodeIndex = distances.indexOf(Math.min(...distances));
@@ -121,7 +127,9 @@ function getClosestActiveNode(x, y) {
 	nodeCoords.forEach(nodeSpot => {
 		let distance = 0;
 		distance = Math.hypot(nodeSpot[0]-parseInt(x), nodeSpot[1]-parseInt(y));
-		distances.push(parseInt(distance));
+		// if (distance < minDist) {
+			distances.push(parseInt(distance));
+		// }
 	});
 
 	let closestNodeIndex = distances.indexOf(Math.min(...distances));
